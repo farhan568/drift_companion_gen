@@ -18,7 +18,11 @@ class ToCompanionGenerator extends GeneratorForAnnotation<GenerateToCompanion> {
     }
 
     final className = element.name;
-    final tableName = className.replaceFirst('Entity', 'LocalDto');
+    // Read annotation parameters (with fallback to defaults)
+    final from = annotation.peek('from')?.stringValue ?? 'Entity';
+    final to = annotation.peek('to')?.stringValue ?? 'LocalTable';
+
+    final tableName = className.replaceFirst(from, to);
     final companionClass = '${tableName}Companion';
     final buffer = StringBuffer();
 
