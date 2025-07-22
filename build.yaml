@@ -1,0 +1,17 @@
+builders:
+  toCompanionBuilder:
+    import: "package:drift_companion_gen/src/builder.dart"
+    builder_factories: ["toCompanionBuilder"]
+    build_extensions: {".dart": [".comp_gen.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]
+
+
+targets:
+  $default:
+    builders:
+      drift_companion_gen|toCompanionBuilder:
+        generate_for:
+          include:
+            - lib/**.dart

@@ -1,7 +1,4 @@
 library drift_companion_gen;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'generate_to_companion.dart';
+export 'src/builder.dart';
+// export 'src/to_companion_generator.dart';
